@@ -25,8 +25,8 @@ paste ${source_path} ${target_path} | sed -E 's/\t/ ||| /g' > ${resultHandle_pat
 paste ${target_path} ${source_path} | sed -E 's/\t/ ||| /g' > ${resultHandle_path}/${target_name}_${source_name}
 
 # remove lines which have an empty source or target
-sed -e '/^ |||/d' -e '/||| $/d' ${resultHandle_path}/${source_name}_${target_name} > ${source_name}_${target_name}.clean
-sed -e '/^ |||/d' -e '/||| $/d' ${resultHandle_path}/${target_name}_${source_name} > ${target_name}_${source_name}.clean
+sed -e '/^ |||/d' -e '/||| $/d' ${resultHandle_path}/${source_name}_${target_name} > ${resultHandle_path}/${source_name}_${target_name}.clean
+sed -e '/^ |||/d' -e '/||| $/d' ${resultHandle_path}/${target_name}_${source_name} > ${resultHandle_path}/${target_name}_${source_name}.clean
 
 # align in both directions
 ${FASTALIGN_DIR}/build/fast_align -i ${resultHandle_path}/${source_name}_${target_name}.clean -p ${direction}.model -d -o -v > ${direction}.talp 2> ${direction}.error
