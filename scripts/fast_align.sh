@@ -13,12 +13,6 @@ if [ ! -f ${FASTALIGN_DIR}/build/fast_align ]; then
   exit 1
 fi
 
-# check parameter count and write usage instruction
-if (( $# != 3 )); then
-  echo "Usage: $0 source_file_path target_file_path direction"
-  exit 1
-fi
-
 source_path=$1
 target_path=$2
 source_name=${1##*/}
